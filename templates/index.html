@@ -1,0 +1,12 @@
+{%extends 'base.html' %}
+
+{% block content %}
+<div class="container" style='background-color:lightskyblue;'>
+<h1 class='text-center'>Users</h1>
+{% for user in users %}
+<div class='card'>
+    <h1 class='card-title'>{{user.user_name}}</h1>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

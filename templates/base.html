@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+.navbar.navbar-2 .navbar-toggler-icon {
+background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+
+</head>
+<body>
+
+    <div class="jumbotron text-center" style='margin-bottom:0'>
+      <h1>Blogz</h1>
+    </div>
+    <nav class="navbar navbar-expand-sm navbar-dark container-fluid" style="background-color: #0d71b8;">
+        <button class="navbar-toggler  d-lg-none navbar-toggler-icon" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item {{nuser}} text-dark">
+                        <a class="nav-link" href="/blogz">Blogz<span class="sr-only"></span></a>
+                    </li>
+                <li class="nav-item {{nuser}} text-dark">
+                    <a class="nav-link" href="/">Users<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item {{nblog}} text-dark">
+                    <a class="nav-link" href="/new_blog">New Blog</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mt-2 mt-lg-0 pr-sm-3">
+            {% if session['user'] %}
+            <li class="nav-item text-dark">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item dropdown {{nlogin}} text-dark">
+                <a class="nav-link dropdown-toggle" href="#" id="dropd  ownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownId">
+                    <a class="dropdown-item" href="/login">Login</a>
+                    <a class="dropdown-item" href="/register">Register</a>
+                </div>
+            </li>
+            {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% block content %}
+
+    {% endblock %}
+    
+</body>
+</html>
