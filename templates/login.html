@@ -2,8 +2,23 @@
 
 {% block content %}
 
+{% with messages = get_flashed_messages() %}
+{% for message in messages %}
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert" style='padding-bottom:0;  margin-bottom:0;'>
+    <p class='text-danger'>{{message}}</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+   
+</div>
+
+{% endfor %}
+{% endwith %}
+
 <div class="container" style='background-color: lightskyblue; padding-bottom:20px;'>
-    <h1 class='text-center'>Login</h1>
+    <h1 class='text-center'style='padding-top:20px;'>Login</h1>
     <form action='/login' method='post'>
     <div class="form-group">
       <label for="user_name">User Name</label>

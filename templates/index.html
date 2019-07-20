@@ -1,12 +1,29 @@
 {%extends 'base.html' %}
 
 {% block content %}
-<div class="container" style='background-color:lightskyblue;'>
-<h1 class='text-center'>Users</h1>
-{% for user in users %}
-<div class='card'>
-    <h1 class='card-title'>{{user.user_name}}</h1>
+
+{% with messages = get_flashed_messages(category_filter=['info']) %}
+{% for message in messages %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert" style='padding-bottom:0; margin-bottom:0;'>
+    <p class='text-success'>{{message}}</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
 </div>
+
+{% endfor %}
+{% endwith %}
+
+<div class="container" style='background-color:lightskyblue;'>
+<h1 class='text-center' style='padding:20px 0 20px 0;'>Users</h1>
+{% for user in users %}
+<a href="/blog?user_name={{user.user_name}}">
+<div class='card'>
+    <h1 class='card-title text-center'>{{user.user_name}}</h1>
+</div>
+</a>
 {% endfor %}
 </div>
 {% endblock %}

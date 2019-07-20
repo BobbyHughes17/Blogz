@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(category_filter=["info"]) %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert" style='padding-bottom:0; margin-bottom:0;'>
+    <p class='text-success'>{{message}}</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+</div>
+{% endfor %}
+{% endwith %}
+
+{% with messages = get_flashed_messages(category_filter=['error']) %}
+{% for message in messages %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert" style='padding-bottom:0; margin-bottom:0;'>
+    <p class='text-danger'>{{message}}</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+</div>
+{% endfor %}
+{% endwith %}
+
+<div class="container" style='background-color:lightskyblue; padding-bottom:20px;'>
+    <h1 class='text-center'style='padding-top:20px;'>New Blog</h1>
+    <form action='/new_blog' method='post'>
+        <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" class="form-control" placeholder="">
+        </div>
+        <div class="form-group">
+        <label for="body">Blog Body</label>
+        <textarea class="form-control" name="body" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+</div>
+
+{% endblock %}
